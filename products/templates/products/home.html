@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+
+{% for product in products.all %}
+<div class="row pt-3" style="border-style:solid; border-color:#f56b45; border-radius:20px; background-color:#fafafa;">
+  <div class="col-2" onclick="window.location='{% url 'detail' product.id %}'" style="cursor:pointer">
+    <img src="{{ product.icon.url }}" class="img-fluid" width=100%>
+  </div>
+  <div class="col-6" onclick="window.location='{% url 'detail' product.id %}'" style="cursor:pointer">
+    <h2> {{ product.title }} </h2>
+    <p> {{ product.summary}} </p>
+  </div>
+
+  <div class="col-4">
+    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='{% url 'detail' product.id %}'"><i class="fa fa-caret-up"></i> Upvotes: {{ product.votes_total }}</button>
+  </div>
+
+</div>
+<br/>
+
+{% endfor %}
+
+
+
+{% endblock %}
